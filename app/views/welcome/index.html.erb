@@ -1,0 +1,32 @@
+<h1>Welcome#index</h1>
+<p>Find me in app/views/welcome/index.html.erb</p>
+<!-- app/views/welcome/index.html.erb -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Input Form</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+  <body>
+    <h1>Enter Your Name</h1>
+    <%= form_with url: '#', method: :post, id: 'nameForm' do %>
+      <%= label_tag :name, 'Name:' %>
+      <%= text_field_tag :name, nil, id: 'nameInput' %>
+      <%= submit_tag 'Submit' %>
+    <% end %>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('nameForm');
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+          const name = document.getElementById('nameInput').value;
+          alert('Hello, ' + name + '! Welcome to the program.');
+        });
+      });
+    </script>
+  </body>
+</html>
